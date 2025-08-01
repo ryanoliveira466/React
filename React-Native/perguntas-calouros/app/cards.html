@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responda aos seus Calouros ⚡💻✔</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+      top: -25%;
+      left: -25%;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: 50%;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      z-index: 1;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin: 0 0 0.4rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #c2f0ff;
+      z-index: 1;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #d0f0ffcc;
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Responda aos seus Calouros ⚡💻✔</h1>
+
+  <div class="cards-container" id="cards-container">
+    <!-- Cards inseridos via JS -->
+  </div>
+
+  <footer>Feito com 💙 por você</footer>
+
+  <script>
+    const links = [
+      "https://sidneiajr.github.io/Front_senac/Questionador/",
+      "https://cross74633.github.io/Perguntas-e-Respostas/",
+      "https://luizvcm.github.io/perguntasVeteranos/",
+      "https://darkcrystall.github.io/PerguntasVeteranas/",
+      "https://eduardo04-32.github.io/perguntasVeteranas/",
+      "https://miguelsteinhorst345.github.io/PerguntasVeteranos/",
+      "https://jorgeoliveira2009.github.io/Card-de-perguntas/",
+      "https://gabriel16dornelles.github.io/perguntasVeteranos/",
+      "https://juandiovani.github.io/perguntasVeteranso/",
+      "https://miduarte.github.io/perguntasVeteranos/",
+      "https://arthuramuller.github.io/perguntasVeteranos/",
+      "https://adrianobasilio480.github.io/perguntasVeteranos/",
+      "https://mariannafelles.github.io/perguntasVeteranos/",
+      "https://timoteo-colares.github.io/perguntasVeteranos/",
+      "https://adrianteixeiradev.github.io/perguntasVeteranos/",
+      "https://vagner0303.github.io/perguntas/",
+      "https://davideoliveiraalves.github.io/perguntasVeteranos/",
+      "https://heavengabi.github.io/PerguntasVeteranos/cardsPerguntas/",
+      "https://jianlpalini.github.io/perguntasVeteranos/",
+      "https://barbzz7.github.io/perguntasVeterano/",
+      "https://henriquebilhan.github.io/perguntasVeteranos/",
+      "https://henrypadilha.github.io/perguntasVeteranos/"
+    ];
+
+    const container = document.getElementById("cards-container");
+
+    links.forEach((url, i) => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      // Ícones variados para diferenciar os cards (padrão emojis)
+      const icon = document.createElement("div");
+      icon.className = "card-icon";
+      const icons = ['💬', '🎯', '📘', '🧠', '✨', '🎓', '🧩', '📚', '📌', '🗂️', '🧭', '📎', '🔍', '🗣️', '📝', '🎮', '💡', '📖', '🔗', '🤝', '🚀', '🏁'];
+      icon.textContent = icons[i % icons.length];
+      card.appendChild(icon);
+
+      const title = document.createElement("h2");
+      title.textContent = `Perguntas ${i + 1}`;
+      card.appendChild(title);
+
+      const desc = document.createElement("p");
+      const cleanUrl = url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+      desc.textContent = cleanUrl;
+      card.appendChild(desc);
+
+      card.addEventListener("click", () => {
+        window.open(url, "_blank", "noopener");
+      });
+
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
