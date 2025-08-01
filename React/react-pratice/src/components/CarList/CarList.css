@@ -1,0 +1,10 @@
+.list-cars{
+    list-style-type: circle;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.list-cars li{
+    font-size: 1em;
+    color: chocolate;
+}
